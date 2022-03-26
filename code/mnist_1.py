@@ -1,6 +1,7 @@
 import matplotlib
 import matplotlib.pyplot as plt
 from sklearn.datasets import load_digits
+from sklearn.model_selection import cross_val_score
 import numpy as np
 
 # load mnist dataset
@@ -51,3 +52,7 @@ sgd_clf.fit(X_train, y_train_5)
 # testing
 some_digit_pred = sgd_clf.predict([some_digit])
 print(f"predicted value: {some_digit_pred}")
+
+# measuring accuracy with cross-validation
+cv_scores = cross_val_score(sgd_clf, X_train, y_train_5, cv=7)
+print(cv_scores)
